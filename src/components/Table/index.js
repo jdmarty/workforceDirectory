@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import API from "../../util/API";
 import TableRow from "../TableRow";
+import SortColumn from "../SortColumn"
 
 function Table(props) {
 
   const [users, setUsers] = useState([]);
   const [targetUsers, setTargetUsers] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
+  const [sort, setSort] = useState({ column: "", order: "" });
 
   // Hook to make initial api call
   useEffect(() => {
@@ -36,6 +38,7 @@ function Table(props) {
       setTargetUsers(targets);
   }, [nameSearch, users])
 
+  // Map users into rows
   const renderRows = (users) => {
     return users.map((user, index) => {
       return (
@@ -92,13 +95,13 @@ function Table(props) {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  Age
+                  <SortColumn arrow="">Age</SortColumn>
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  Registered
+                  <SortColumn arrow="">Registered</SortColumn>
                 </th>
               </tr>
             </thead>
