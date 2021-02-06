@@ -1,42 +1,74 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import API from "../../util/API";
-import TableRow from "../TableRow"
+import TableRow from "../TableRow";
 
-function Table() {
+function Table(props) {
+  const [users, setUsers] = useState(props.users);
+
+  const renderRows = (users) => {
+    return users.map((user, index) => {
+      return (
+        <TableRow
+          thumbnail={user.picture.thumbnail}
+          name={user.name}
+          username={user.login.username}
+          email={user.email}
+          phone={user.phone}
+          location={user.location}
+          age={user.dob.age}
+          registered={user.registered.date}
+          key={index}
+        />
+      );
+    });
+  };
+
   return (
-    <div className="flex flex-col">
     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-            <table className="min-w-full divide-y divide-gray-200">
+          <table className="min-w-full divide-y divide-gray-200">
             <thead className="bg-gray-50">
-                <tr>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Name
+              <tr>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  <input type="text" value="" placeholder="Name"></input>
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Title
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  <input type="text" value="" placeholder="Address"></input>
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Contact
                 </th>
-                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Role
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Age
                 </th>
-                <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Edit</span>
+                <th
+                  scope="col"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                >
+                  Registered
                 </th>
-                </tr>
+              </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-                <TableRow />
+              {renderRows(users)}
             </tbody>
-            </table>
+          </table>
         </div>
-        </div>
+      </div>
     </div>
-    </div>
-
   );
 }
 
