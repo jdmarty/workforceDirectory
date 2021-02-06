@@ -3,7 +3,20 @@ import API from "../../util/API";
 import TableRow from "../TableRow";
 
 function Table(props) {
-  const [users, setUsers] = useState(props.users);
+
+  const [users, setUsers] = useState([]);
+  const [targetUsers, setTargetUsers] = useState([]);
+  const [nameSearch, setNameSearch] = useState("");
+
+  useEffect(() => {
+    API.getMultipleUsers(10)
+      .then((res) => {
+        setUsers(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const renderRows = (users) => {
     return users.map((user, index) => {
@@ -23,6 +36,10 @@ function Table(props) {
     });
   };
 
+  const handleNameChange = e => {
+      setNameSearch(e.target.value)
+  }
+
   return (
     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -34,13 +51,18 @@ function Table(props) {
                   scope="col"
                   className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  <input type="text" value="" placeholder="Name"></input>
+                  <input
+                    type="text"
+                    value={nameSearch}
+                    placeholder="Name"
+                    onChange={handleNameChange}
+                  ></input>
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  <input type="text" value="" placeholder="Address"></input>
+                  Address
                 </th>
                 <th
                   scope="col"

@@ -16,10 +16,9 @@ function App() {
       })
   }, [])
 
-
   return (
     <div className="App">
-      <Table users={allUsers}/>
+      <Table />
     </div>
   );
 }
