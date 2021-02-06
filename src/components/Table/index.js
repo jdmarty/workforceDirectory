@@ -8,15 +8,33 @@ function Table(props) {
   const [targetUsers, setTargetUsers] = useState([]);
   const [nameSearch, setNameSearch] = useState("");
 
+  // Hook to make initial api call
   useEffect(() => {
     API.getMultipleUsers(10)
       .then((res) => {
         setUsers(res.data.results);
+        setTargetUsers(res.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  // Hook to update target users when name changes
+  useEffect(() => {
+      let targets;
+      if (nameSearch) {
+        targets = users.filter((user) => {
+          return (
+            user.name.first.match(new RegExp(nameSearch, 'gi')) ||
+            user.name.last.match(new RegExp(nameSearch, 'gi'))
+          );
+        });
+      } else {
+        targets = users;
+      }
+      setTargetUsers(targets);
+  }, [nameSearch, users])
 
   const renderRows = (users) => {
     return users.map((user, index) => {
@@ -85,7 +103,7 @@ function Table(props) {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {renderRows(users)}
+              {renderRows(targetUsers)}
             </tbody>
           </table>
         </div>

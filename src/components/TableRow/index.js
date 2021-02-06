@@ -1,7 +1,6 @@
 import React from "react";
 
 function TableRow(props) {
-  console.log(props)
   const registerDate = new Date(props.registered).toDateString()
   return (
     <tr>
