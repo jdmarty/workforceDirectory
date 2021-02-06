@@ -1,9 +1,10 @@
 import React from "react";
 
-function Featured() {
+function Featured(props) {
   return (
-    <div className="container mx-auto border-4 border-black">
-      <h1>User Directory!</h1>
+    <div className="flex flex-row container mx-auto border-2 border-blue-700">
+      <img src={props.image} alt={props.name}></img>
+      <p>Hello!</p>
     </div>
   );
 }

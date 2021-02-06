@@ -1,40 +1,42 @@
 import React, { useEffect } from "react";
 import API from "../../util/API";
+import TableRow from "../TableRow"
 
 function Table() {
-  useEffect(() => {
-    API.getMultipleUsers(10).then((data) => console.log(data));
-  }, []);
   return (
-    <table className="table-fixed">
-      <thead>
-        <tr>
-          <th className="w-1/2">Title</th>
-          <th className="w-1/4">Author</th>
-          <th className="w-1/4">Views</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Intro to CSS</td>
-          <td>Adam</td>
-          <td>858</td>
-        </tr>
-        <tr>
-          <td>
-            A Long and Winding Tour of the History of UI Frameworks and Tools
-            and the Impact on Design
-          </td>
-          <td>Adam</td>
-          <td>112</td>
-        </tr>
-        <tr>
-          <td>Intro to JavaScript</td>
-          <td>Chris</td>
-          <td>1,280</td>
-        </tr>
-      </tbody>
-    </table>
+    <div className="flex flex-col">
+    <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+            <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+                <tr>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Name
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Title
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Status
+                </th>
+                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Role
+                </th>
+                <th scope="col" className="relative px-6 py-3">
+                    <span className="sr-only">Edit</span>
+                </th>
+                </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+                <TableRow />
+            </tbody>
+            </table>
+        </div>
+        </div>
+    </div>
+    </div>
+
   );
 }
 
