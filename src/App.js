@@ -13,8 +13,8 @@ function App() {
     city: ""
   });
   const [sort, setSort] = useState({
-    age: "asc",
-    reg: "asc"
+    age: "",
+    reg: ""
   });
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
@@ -93,11 +93,13 @@ function App() {
     let newSort = {...sort}
     if ((newSort[e.target.dataset.column] === "asc")) {
       newSort[e.target.dataset.column] = "desc";
+    } else if (newSort[e.target.dataset.column] === "desc") {
+      newSort[e.target.dataset.column] = "";
     } else {
       newSort[e.target.dataset.column] = "asc";
     }
     setSort(newSort)
-    console.log(sort)
+
     let targets = [...targetUsers]
 
     // sort by age

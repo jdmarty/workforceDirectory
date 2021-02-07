@@ -50,25 +50,39 @@ function Table(props) {
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
                 >
-                  <SortColumn 
-                    column="age" 
-                    arrow=""
-                    onClick={props.onClick}>
-                      Age
-                    </SortColumn>
+                  <SortColumn
+                    column="age"
+                    arrow={
+                      props.sort.age === "asc"
+                        ? "^"
+                        : props.sort.age === "desc"
+                        ? "v"
+                        : ""
+                    }
+                    onClick={props.onClick}
+                  >
+                    AGE
+                  </SortColumn>
                 </th>
                 <th
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 tracking-wider"
                 >
-                  <SortColumn 
-                    column="reg" 
-                    arrow="" 
-                    onClick={props.onClick}>
-                      Registered
-                    </SortColumn>
+                  <SortColumn
+                    column="reg"
+                    arrow={
+                      props.sort.reg === "asc"
+                        ? "^"
+                        : props.sort.reg === "desc"
+                        ? "v"
+                        : ""
+                    }
+                    onClick={props.onClick}
+                  >
+                    REGISTERED
+                  </SortColumn>
                 </th>
               </tr>
             </thead>
