@@ -41,8 +41,8 @@ function Selector(props) {
             onChange={props.onChange}
           >
             <option value="">All</option>
-            {props.countries.map((country) => {
-              return <option value={country}>{country}</option>;
+            {props.countries.map((country, index) => {
+              return <option value={country} key={country+index}>{country}</option>;
             })}
           </select>
         </div>
@@ -57,8 +57,8 @@ function Selector(props) {
             onChange={props.onChange}
           >
             <option value="">All</option>
-            {props.cities.map((city) => {
-              return <option value={city}>{city}</option>;
+            {props.cities.map((city, index) => {
+              return <option value={city} key={city+index}>{city}</option>;
             })}
           </select>
         </div>

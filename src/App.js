@@ -7,6 +7,10 @@ function App() {
   const [users, setUsers] = useState([]);
   const [targetUsers, setTargetUsers] = useState([]);
   const [filter, setFilter] = useState({});
+  const [sort, setSort] = useState({
+    age: "none",
+    reg: "none"
+  });
   const [countries, setCountries] = useState([]);
   const [cities, setCities] = useState([]);
 
@@ -72,6 +76,19 @@ function App() {
     return setFilter(filter)
   }
 
+  // Handle Sort Click
+  const handleSortClick = e => {
+    // set a new sort object
+    let newSort = sort
+    if ((newSort[e.target.dataset.column] === "asc")) {
+      newSort[e.target.dataset.column] = "desc";
+    } else {
+      newSort[e.target.dataset.column] = "asc";
+    }
+    setSort(newSort)
+    console.log(sort)
+  }
+
   return (
     <div className="App">
       <Selector 
@@ -79,7 +96,10 @@ function App() {
         filter={filter} 
         countries={countries}
         cities={cities}/>
-      <Table users={targetUsers} />
+      <Table 
+        users={targetUsers} 
+        sort={sort}
+        onClick={handleSortClick}/>
     </div>
   );
 }

@@ -52,13 +52,23 @@ function Table(props) {
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  <SortColumn arrow="">Age</SortColumn>
+                  <SortColumn 
+                    column="age" 
+                    arrow=""
+                    onClick={props.onClick}>
+                      Age
+                    </SortColumn>
                 </th>
                 <th
                   scope="col"
                   className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  <SortColumn arrow="">Registered</SortColumn>
+                  <SortColumn 
+                    column="reg" 
+                    arrow="" 
+                    onClick={props.onClick}>
+                      Registered
+                    </SortColumn>
                 </th>
               </tr>
             </thead>
