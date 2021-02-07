@@ -4,40 +4,6 @@ import TableRow from "../TableRow";
 import SortColumn from "../SortColumn"
 
 function Table(props) {
-
-  const [users, setUsers] = useState([]);
-  const [targetUsers, setTargetUsers] = useState([]);
-  const [nameSearch, setNameSearch] = useState("");
-  const [sort, setSort] = useState({ column: "", order: "" });
-
-  // Hook to make initial api call
-  useEffect(() => {
-    API.getMultipleUsers(10)
-      .then((res) => {
-        setUsers(res.data.results);
-        setTargetUsers(res.data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
-  // Hook to update target users when name changes
-  useEffect(() => {
-      let targets;
-      if (nameSearch) {
-        targets = users.filter((user) => {
-          return (
-            user.name.first.match(new RegExp(nameSearch, 'gi')) ||
-            user.name.last.match(new RegExp(nameSearch, 'gi'))
-          );
-        });
-      } else {
-        targets = users;
-      }
-      setTargetUsers(targets);
-  }, [nameSearch, users])
-
   // Map users into rows
   const renderRows = (users) => {
     return users.map((user, index) => {
@@ -57,10 +23,6 @@ function Table(props) {
     });
   };
 
-  const handleNameChange = e => {
-      setNameSearch(e.target.value)
-  }
-
   return (
     <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -72,12 +34,7 @@ function Table(props) {
                   scope="col"
                   className="px-6 py-3 text-left font-medium text-gray-500 uppercase tracking-wider"
                 >
-                  <input
-                    type="text"
-                    value={nameSearch}
-                    placeholder="Name"
-                    onChange={handleNameChange}
-                  ></input>
+                  Name
                 </th>
                 <th
                   scope="col"
@@ -106,7 +63,7 @@ function Table(props) {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {renderRows(targetUsers)}
+              {renderRows(props.users)}
             </tbody>
           </table>
         </div>

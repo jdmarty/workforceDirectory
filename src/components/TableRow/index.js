@@ -26,7 +26,7 @@ function TableRow(props) {
           {props.location.street.number + " " + props.location.street.name}
         </div>
         <div className="text-sm text-gray-500">
-          {props.location.state + ", " + props.location.country}
+          {props.location.city + ", " + props.location.country}
         </div>
       </td>
       <td className="px-6 py-4 whitespace-nowrap">
