@@ -21,25 +21,37 @@ function App() {
 
   // Hook to get the initial list of users
   useEffect(() => {
-    API.getMultipleUsers(10)
+    API.getMultipleUsers(100)
       .then((res) => {
         // set users and target users
         setUsers(res.data.results);
         setTargetUsers(res.data.results);
         // get a list of countries and cities
-        const countries = res.data.results.map(user => {
-          return user.location.country
-        });
-        const cities = res.data.results.map((user) => {
-          return user.location.city;
-        });
-        setCountries(countries)
-        setCities(cities);
+        mapCountries(res.data.results);
+        mapCities(res.data.results);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
+
+  // function to create countries map
+  const mapCountries = users => {
+    const countries =  users.map((user) => {
+      return user.location.country;
+    });
+    const uniqueCountries = [...new Set(countries)]
+    setCountries(uniqueCountries)
+  }
+
+  // function to create cities map
+  const mapCities = (users) => {
+    const cities = users.map((user) => {
+      return user.location.city;
+    });
+    const uniqueCities = [...new Set(cities)];
+    setCities(uniqueCities);
+  };
 
   // Handle Input change
   const handleFilterChange = e => {
@@ -87,6 +99,23 @@ function App() {
     setTargetUsers(targets);
   }
 
+  // Handle Reset Click
+  const handleResetClick = e => {
+    e.preventDefault();
+    setSort({
+      age: "",
+      reg: ""
+    })
+    setFilter({
+      name: "",
+      username: "",
+      country: "",
+      city: "",
+    });
+    setTargetUsers(users)
+  }
+
+
   // Handle Sort Click
   const handleSortClick = e => {
     // set a new sort object
@@ -103,30 +132,32 @@ function App() {
     let targets = [...targetUsers]
 
     // sort by age
-    if (sort.age && e.target.dataset.column === "age") {
-      if (sort.age === "asc") {
+    if (newSort.age && e.target.dataset.column === "age") {
+      if (newSort.age === "asc") {
         targets.sort((a,b) => a.dob.age - b.dob.age)
-      } else if (sort.age === "desc") {
+      } else if (newSort.age === "desc") {
         targets.sort((a, b) => b.dob.age - a.dob.age);
       }
     }
 
     // sort by registered date
-    if (sort.reg && e.target.dataset.column === "reg") {
-      if (sort.reg === "asc") {
-        targets.sort((a, b) => a.registered.age - b.registered.age);
-      } else if (sort.reg === "desc") {
+    if (newSort.reg && e.target.dataset.column === "reg") {
+      if (newSort.reg === "asc") {
         targets.sort((a, b) => b.registered.age - a.registered.age);
+      } else if (newSort.reg === "desc") {
+        targets.sort((a, b) => a.registered.age - b.registered.age);
       }
     }
 
+    setSort(newSort);
     setTargetUsers(targets)
   }
 
   return (
     <div className="App">
       <Selector 
-        onChange={handleFilterChange} 
+        onChange={handleFilterChange}
+        onClick={handleResetClick} 
         filter={filter} 
         countries={countries}
         cities={cities}/>

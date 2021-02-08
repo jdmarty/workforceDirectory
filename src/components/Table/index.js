@@ -28,7 +28,7 @@ function Table(props) {
       <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
         <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
           <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
+            <thead className="bg-indigo-100 border-indigo-300 border-2">
               <tr>
                 <th
                   scope="col"
@@ -59,7 +59,7 @@ function Table(props) {
                         ? "^"
                         : props.sort.age === "desc"
                         ? "v"
-                        : ""
+                        : "--"
                     }
                     onClick={props.onClick}
                   >
@@ -77,7 +77,7 @@ function Table(props) {
                         ? "^"
                         : props.sort.reg === "desc"
                         ? "v"
-                        : ""
+                        : "--"
                     }
                     onClick={props.onClick}
                   >
