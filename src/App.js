@@ -125,7 +125,7 @@ function App() {
 
   // Handle User Generate Click
   const handleGenerateClick = e => {
-    e.stopPropagation()
+    e.preventDefault()
     API.getMultipleUsers(userCount)
       .then((res) => {
         // set users and target users
