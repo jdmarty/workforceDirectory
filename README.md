@@ -1,7 +1,8 @@
 # Workforce Directory
 
 ## Links
-
+- Deployed: (https://jdmarty.github.io/workforceDirectory/)[https://jdmarty.github.io/workforceDirectory/]
+- Repository: (https://github.com/jdmarty/workforceDirectory)[https://github.com/jdmarty/workforceDirectory]
 
 ![Deployed Screenshot](https://github.com/jdmarty/workforceDirectory/blob/main/public/deployedScreen.PNG)
 
