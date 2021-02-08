@@ -102,6 +102,7 @@ function App() {
   // Handle Reset Click
   const handleResetClick = e => {
     e.preventDefault();
+    // set sort, filter, and target users back to defaults
     setSort({
       age: "",
       reg: ""
@@ -127,7 +128,6 @@ function App() {
     } else {
       newSort[e.target.dataset.column] = "asc";
     }
-    setSort(newSort)
 
     let targets = [...targetUsers]
 

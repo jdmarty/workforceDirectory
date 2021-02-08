@@ -2,15 +2,15 @@ import React from "react";
 
 function Selector(props) {
   return (
-    <form className="container bg-gray-300">
+    <form className="bg-gray-300 py-2">
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 py-2 flex">
-        <h1 className="lg:col-span-4 col-span-2 text-center">SEARCH OPTIONS</h1>
+        <h1 className="lg:col-span-4 col-span-2 text-center text-xl underline">SEARCH OPTIONS</h1>
         <div className="flex justify-center">
-          <label className="mx-2" htmlFor="name">
+          <label className="px-2" htmlFor="name">
             Name
           </label>
           <input
-            className="border-2 border-black rounded-md"
+            className="border-2 border-black rounded-md shadow-xl"
             type="text"
             placeholder="Name"
             name="name"
@@ -19,11 +19,11 @@ function Selector(props) {
           ></input>
         </div>
         <div className="flex justify-center">
-          <label className="mx-2" htmlFor="username">
+          <label className="px-2" htmlFor="username">
             Username
           </label>
           <input
-            className="border-2 border-black rounded-md"
+            className="border-2 border-black rounded-md shadow-xl"
             type="text"
             placeholder="Username"
             name="username"
@@ -32,11 +32,11 @@ function Selector(props) {
           ></input>
         </div>
         <div className="flex justify-center">
-          <label className="mx-2" htmlFor="country">
+          <label className="px-2" htmlFor="country">
             Country
           </label>
           <select
-            className="border-2 border-black rounded-md"
+            className="border-2 border-black rounded-md shadow-xl"
             name="country"
             value={props.filter.country}
             onChange={props.onChange}
@@ -52,11 +52,11 @@ function Selector(props) {
           </select>
         </div>
         <div className="flex justify-center">
-          <label className="mx-2" htmlFor="country">
+          <label className="px-2" htmlFor="country">
             City
           </label>
           <select
-            className="border-2 border-black rounded-md"
+            className="border-2 border-black rounded-md shadow-xl"
             name="city"
             value={props.filter.city}
             onChange={props.onChange}
@@ -73,7 +73,7 @@ function Selector(props) {
         </div>
         <div className="lg:col-span-4 col-span-2 flex justify-center">
           <button 
-            className="border-2 border-black rounded-md p-1 bg-pink-300" 
+            className="border-2 border-black rounded-md p-1 bg-pink-300 shadow-xl" 
             onClick={props.onClick}>
               Reset Search
           </button>
