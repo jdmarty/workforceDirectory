@@ -98,6 +98,10 @@ function App() {
     
     //set targets
     setTargetUsers(targets);
+
+    //set countries to only include users that still match
+    mapCountries(targets);
+    mapCities(targets);
   }
 
   // Handle Reset Click

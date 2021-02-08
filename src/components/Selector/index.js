@@ -12,7 +12,7 @@ function Selector(props) {
             Name
           </label>
           <input
-            className="border-2 border-black rounded-md shadow-xl"
+            className="border-2 border-black rounded-md shadow-xl w-1/2"
             type="text"
             placeholder="Name"
             name="name"
@@ -25,7 +25,7 @@ function Selector(props) {
             Username
           </label>
           <input
-            className="border-2 border-black rounded-md shadow-xl"
+            className="border-2 border-black rounded-md shadow-xl w-1/2"
             type="text"
             placeholder="Username"
             name="username"
@@ -38,7 +38,7 @@ function Selector(props) {
             Country
           </label>
           <select
-            className="border-2 border-black rounded-md shadow-xl"
+            className="border-2 border-black rounded-md shadow-xl w-1/2"
             name="country"
             value={props.filter.country}
             onChange={props.onFilter}
@@ -58,7 +58,7 @@ function Selector(props) {
             City
           </label>
           <select
-            className="border-2 border-black rounded-md shadow-xl"
+            className="border-2 border-black rounded-md shadow-xl w-1/2"
             name="city"
             value={props.filter.city}
             onChange={props.onFilter}
@@ -83,7 +83,7 @@ function Selector(props) {
           <div className="border-2 border-black rounded-md p-1 bg-blue-300 shadow-xl">
             <button onClick={props.onGenerate}>Generate Users</button>
             <input
-              className="w-16 mx-2"
+              className="w-16 mx-2 rounded-md text-center"
               type="number"
               max="1000"
               onChange={props.onCountChange}
