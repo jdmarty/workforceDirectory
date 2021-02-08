@@ -1,6 +1,13 @@
 # Workforce Directory
 
+## Links
 
+
+## Description
+This conceptual app demonstrates how React can be used to create sortable data tables that respond instantly to user input. By submitting search terms and restraints in the search form, a user can filter the table of user accounts to fit their needs, or sort those users by age or registration date.
+
+## Use Instructions
+When this app loads, 
 
 # Unit 19 React Homework: Employee Directory
 

@@ -4,7 +4,9 @@ function Selector(props) {
   return (
     <form className="bg-gray-300 py-2">
       <div className="grid lg:grid-cols-4 grid-cols-2 gap-4 py-2 flex">
-        <h1 className="lg:col-span-4 col-span-2 text-center text-xl underline">SEARCH OPTIONS</h1>
+        <h1 className="lg:col-span-4 col-span-2 text-center text-xl underline">
+          SEARCH OPTIONS
+        </h1>
         <div className="flex justify-center">
           <label className="px-2" htmlFor="name">
             Name
@@ -15,7 +17,7 @@ function Selector(props) {
             placeholder="Name"
             name="name"
             value={props.filter.name}
-            onChange={props.onChange}
+            onChange={props.onFilter}
           ></input>
         </div>
         <div className="flex justify-center">
@@ -28,7 +30,7 @@ function Selector(props) {
             placeholder="Username"
             name="username"
             value={props.filter.username}
-            onChange={props.onChange}
+            onChange={props.onFilter}
           ></input>
         </div>
         <div className="flex justify-center">
@@ -39,7 +41,7 @@ function Selector(props) {
             className="border-2 border-black rounded-md shadow-xl"
             name="country"
             value={props.filter.country}
-            onChange={props.onChange}
+            onChange={props.onFilter}
           >
             <option value="">All</option>
             {props.countries.map((country, index) => {
@@ -59,7 +61,7 @@ function Selector(props) {
             className="border-2 border-black rounded-md shadow-xl"
             name="city"
             value={props.filter.city}
-            onChange={props.onChange}
+            onChange={props.onFilter}
           >
             <option value="">All</option>
             {props.cities.map((city, index) => {
@@ -72,11 +74,22 @@ function Selector(props) {
           </select>
         </div>
         <div className="lg:col-span-4 col-span-2 flex justify-center">
-          <button 
-            className="border-2 border-black rounded-md p-1 bg-pink-300 shadow-xl" 
-            onClick={props.onClick}>
-              Reset Search
+          <button
+            className="border-2 border-black rounded-md p-1 bg-pink-300 shadow-xl mx-2"
+            onClick={props.onReset}
+          >
+            Reset Search
           </button>
+          <div className="border-2 border-black rounded-md p-1 bg-blue-300 shadow-xl">
+            <button onClick={props.onGenerate}>Generate Users</button>
+            <input
+              className="w-16 mx-2"
+              type="number"
+              max="1000"
+              onChange={props.onCountChange}
+              value={props.userCount}
+            ></input>
+          </div>
         </div>
       </div>
     </form>

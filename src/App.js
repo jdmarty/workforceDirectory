@@ -4,6 +4,7 @@ import Table from "./components/Table"
 import Selector from "./components/Selector"
 
 function App() {
+  const [userCount, setUserCount] = useState(100)
   const [users, setUsers] = useState([]);
   const [targetUsers, setTargetUsers] = useState([]);
   const [filter, setFilter] = useState({
@@ -116,6 +117,28 @@ function App() {
     setTargetUsers(users)
   }
 
+  // Handle User Count Change
+  const handleUserCountChange = e => {
+    const newCount = e.target.value
+    setUserCount(newCount)
+  }
+
+  // Handle User Generate Click
+  const handleGenerateClick = e => {
+    e.stopPropagation()
+    API.getMultipleUsers(userCount)
+      .then((res) => {
+        // set users and target users
+        setUsers(res.data.results);
+        setTargetUsers(res.data.results);
+        // get a list of countries and cities
+        mapCountries(res.data.results);
+        mapCities(res.data.results);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   // Handle Sort Click
   const handleSortClick = e => {
@@ -156,11 +179,14 @@ function App() {
   return (
     <div className="App">
       <Selector 
-        onChange={handleFilterChange}
-        onClick={handleResetClick} 
+        onFilter={handleFilterChange}
+        onReset={handleResetClick}
+        onCountChange={handleUserCountChange}
+        onGenerate={handleGenerateClick}
         filter={filter} 
         countries={countries}
-        cities={cities}/>
+        cities={cities}
+        userCount={userCount}/>
       <Table 
         users={targetUsers} 
         sort={sort}
