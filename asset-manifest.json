@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/workforceDirectory/static/css/main.2b2687c1.chunk.css",
+    "main.js": "/workforceDirectory/static/js/main.7365fe20.chunk.js",
+    "main.js.map": "/workforceDirectory/static/js/main.7365fe20.chunk.js.map",
+    "runtime-main.js": "/workforceDirectory/static/js/runtime-main.5d99e315.js",
+    "runtime-main.js.map": "/workforceDirectory/static/js/runtime-main.5d99e315.js.map",
+    "static/js/2.7a537a1c.chunk.js": "/workforceDirectory/static/js/2.7a537a1c.chunk.js",
+    "static/js/2.7a537a1c.chunk.js.map": "/workforceDirectory/static/js/2.7a537a1c.chunk.js.map",
+    "static/js/3.26129d90.chunk.js": "/workforceDirectory/static/js/3.26129d90.chunk.js",
+    "static/js/3.26129d90.chunk.js.map": "/workforceDirectory/static/js/3.26129d90.chunk.js.map",
+    "index.html": "/workforceDirectory/index.html",
+    "static/css/main.2b2687c1.chunk.css.map": "/workforceDirectory/static/css/main.2b2687c1.chunk.css.map",
+    "static/js/2.7a537a1c.chunk.js.LICENSE.txt": "/workforceDirectory/static/js/2.7a537a1c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5d99e315.js",
+    "static/js/2.7a537a1c.chunk.js",
+    "static/css/main.2b2687c1.chunk.css",
+    "static/js/main.7365fe20.chunk.js"
+  ]
+}
