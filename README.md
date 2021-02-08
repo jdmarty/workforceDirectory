@@ -9,10 +9,28 @@ This conceptual app demonstrates how React can be used to create sortable data t
 ## Use Instructions
 When this app loads, it will generate a table of 100 users that can be sorted using a number of criteria
 
-### Sorting
+### Filtering
 - Name: Type text into the name search field to find a name containing a matching string
 - Username: Type text into the username search field to find a username containing a matching string
-- Country: Select a country
+- Country: Select a country to see only users from that country
+- City: Select a city to see only users from that city
+
+### Sorting
+Click the dash/arrow next to the age or registered column to change sort direction of that column
+
+### Reset
+Click the reset button to remove all sorting and filter modifiers from the table
+
+### Generate Users
+- Set the value in the Generate Users button to a number of users that you would like to generate for a new table
+- Click the Generate Users button to create a new table of the input number of users (up to 1000)
+
+## License
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)
+
+This project uses the ISC license
+
+---------------------------------------------
 
 # Unit 19 React Homework: Employee Directory
 
